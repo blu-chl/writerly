@@ -101,7 +101,8 @@ export async function exportToDocx(
     children.push(new Paragraph({ text: "" }));
   }
 
-  const doc = new Document({ sections: [{ children: children as Paragraph[] }] });
+  // eslint-disable-next-line @typescript-eslint/no-explicit-any
+  const doc = new Document({ sections: [{ children: children as any[] }] });
   const blob = await Packer.toBlob(doc);
 
   const url = URL.createObjectURL(blob);

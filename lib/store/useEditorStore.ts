@@ -171,7 +171,7 @@ export const useEditorStore = create<EditorStore>((set, get) => {
         isSaving: false,
         saveError: error ? "Error al guardar" : null,
         chapters: get().chapters.map((c) =>
-          c.id === id ? { ...c, content, word_count: wordCount } : c
+          c.id === id ? { ...c, content: content as import("@/lib/supabase/types").Json, word_count: wordCount } : c
         ),
       });
     },

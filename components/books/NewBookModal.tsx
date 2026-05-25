@@ -67,7 +67,6 @@ export default function NewBookModal({ onClose }: Props) {
                   className="w-8 h-8 rounded-full transition-transform hover:scale-110"
                   style={{
                     backgroundColor: c,
-                    ring: color === c ? `3px solid ${c}` : "none",
                     outline: color === c ? `3px solid ${c}` : "none",
                     outlineOffset: "2px",
                   }}
