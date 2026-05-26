@@ -28,8 +28,7 @@ export default function LoginForm() {
       return;
     }
 
-    router.push("/");
-    router.refresh();
+    window.location.href = "/";
   };
 
   return (

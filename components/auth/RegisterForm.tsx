@@ -36,7 +36,8 @@ export default function RegisterForm() {
       return;
     }
 
-    setSuccess(true);
+    // Si no hay confirmación de email, ir directo al dashboard
+    window.location.href = "/";
     setLoading(false);
   };
 
