@@ -7,8 +7,9 @@ import { createClient } from "@/lib/supabase/client";
 import { useEditorStore } from "@/lib/store/useEditorStore";
 import BookCard from "@/components/books/BookCard";
 import NewBookModal from "@/components/books/NewBookModal";
+import { RequireAuth } from "@/components/auth/AuthGuard";
 
-export default function DashboardPage() {
+function DashboardContent() {
   const router = useRouter();
   const { books, fetchBooks } = useEditorStore();
   const [showNewBook, setShowNewBook] = useState(false);
@@ -26,12 +27,11 @@ export default function DashboardPage() {
   const handleLogout = async () => {
     const supabase = createClient();
     await supabase.auth.signOut();
-    router.push("/login");
+    window.location.href = "/login";
   };
 
   return (
     <div className="min-h-screen bg-ink-50">
-      {/* Header */}
       <header className="bg-white border-b border-ink-100 sticky top-0 z-40">
         <div className="max-w-6xl mx-auto px-6 py-4 flex items-center justify-between">
           <div className="flex items-center gap-2">
@@ -39,9 +39,7 @@ export default function DashboardPage() {
             <span className="text-lg font-bold text-ink-900 font-serif">Writerly</span>
           </div>
           <div className="flex items-center gap-4">
-            {userName && (
-              <span className="text-sm text-ink-500">Hola, {userName}</span>
-            )}
+            {userName && <span className="text-sm text-ink-500">Hola, {userName}</span>}
             <button
               onClick={handleLogout}
               className="flex items-center gap-1.5 text-sm text-ink-500 hover:text-ink-800 transition"
@@ -53,7 +51,6 @@ export default function DashboardPage() {
         </div>
       </header>
 
-      {/* Content */}
       <main className="max-w-6xl mx-auto px-6 py-10">
         <div className="flex items-end justify-between mb-8">
           <div>
@@ -100,5 +97,13 @@ export default function DashboardPage() {
 
       {showNewBook && <NewBookModal onClose={() => setShowNewBook(false)} />}
     </div>
+  );
+}
+
+export default function DashboardPage() {
+  return (
+    <RequireAuth>
+      <DashboardContent />
+    </RequireAuth>
   );
 }
