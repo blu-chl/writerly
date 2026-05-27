@@ -3,7 +3,20 @@ import { Bold, Italic, Underline, Strikethrough, Highlighter, List, ListOrdered,
 import { cn } from "@/lib/utils/cn";
 
 function Btn({ onClick, active, disabled, title, children }: { onClick: () => void; active?: boolean; disabled?: boolean; title: string; children: React.ReactNode }) {
-  return <button type="button" onClick={onClick} disabled={disabled} title={title} className={cn("p-1.5 rounded-md transition-colors text-ink-600 hover:bg-ink-100", active && "bg-indigo-100 text-indigo-700", disabled && "opacity-30 cursor-not-allowed")}>{children}</button>;
+  return (
+    <button
+      type="button"
+      title={title}
+      disabled={disabled}
+      onMouseDown={(e) => {
+        e.preventDefault(); // Evita que el editor pierda el foco
+        onClick();
+      }}
+      className={cn("p-1.5 rounded-md transition-colors text-ink-600 hover:bg-ink-100", active && "bg-indigo-100 text-indigo-700", disabled && "opacity-30 cursor-not-allowed")}
+    >
+      {children}
+    </button>
+  );
 }
 const Div = () => <span className="w-px h-5 bg-ink-200 mx-0.5" />;
 
