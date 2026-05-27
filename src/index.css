@@ -1,0 +1,27 @@
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+@layer base {
+  body { background-color: #f8f7f4; color: #201e19; -webkit-font-smoothing: antialiased; }
+  ::-webkit-scrollbar { width: 6px; }
+  ::-webkit-scrollbar-thumb { background: #d4cfc7; border-radius: 3px; }
+}
+
+@layer components {
+  .ProseMirror { @apply outline-none min-h-[60vh]; font-family: Georgia, Cambria, serif; font-size: 1.125rem; line-height: 1.9; }
+  .ProseMirror p { @apply mb-4; }
+  .ProseMirror h1 { @apply text-3xl font-bold mb-4 mt-8 font-sans; }
+  .ProseMirror h2 { @apply text-2xl font-bold mb-3 mt-6 font-sans; }
+  .ProseMirror h3 { @apply text-xl font-semibold mb-2 mt-5 font-sans; }
+  .ProseMirror blockquote { @apply border-l-4 border-ink-300 pl-4 italic text-ink-600 my-4; }
+  .ProseMirror ul { list-style-type: disc; @apply pl-6 mb-4 space-y-1; }
+  .ProseMirror ol { list-style-type: decimal; @apply pl-6 mb-4 space-y-1; }
+  .ProseMirror li { @apply pl-1; }
+  .ProseMirror strong { @apply font-bold; }
+  .ProseMirror em { @apply italic; }
+  .ProseMirror u { @apply underline; }
+  .ProseMirror mark { @apply bg-yellow-200 rounded px-0.5; }
+  .ProseMirror hr { @apply border-ink-200 my-8; }
+  .ProseMirror p.is-editor-empty:first-child::before { content: attr(data-placeholder); @apply text-ink-400 pointer-events-none float-left h-0; }
+}
