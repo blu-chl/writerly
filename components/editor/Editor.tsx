@@ -25,10 +25,21 @@ export default function Editor({ chapterId, initialContent }: Props) {
 
   const editor = useEditor({
     extensions: [
-      StarterKit.configure({ heading: { levels: [1, 2, 3] } }),
+      StarterKit.configure({
+        heading: { levels: [1, 2, 3] },
+        bulletList: { keepMarks: true, keepAttributes: false },
+        orderedList: { keepMarks: true, keepAttributes: false },
+        blockquote: {},
+        horizontalRule: {},
+        bold: {},
+        italic: {},
+        strike: {},
+        code: {},
+        codeBlock: {},
+      }),
       UnderlineExt,
       Highlight,
-      TextAlign.configure({ types: ["heading", "paragraph"] }),
+      TextAlign.configure({ types: ["heading", "paragraph", "blockquote"] }),
       Placeholder.configure({
         placeholder: "Comienza a escribir tu historia aquí...",
       }),

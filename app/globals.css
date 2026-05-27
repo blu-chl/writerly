@@ -45,8 +45,9 @@
   .ProseMirror blockquote {
     @apply border-l-4 border-ink-300 pl-4 italic text-ink-600 my-4;
   }
-  .ProseMirror ul { @apply list-disc pl-6 mb-4 space-y-1; }
-  .ProseMirror ol { @apply list-decimal pl-6 mb-4 space-y-1; }
+  .ProseMirror ul { list-style-type: disc; @apply pl-6 mb-4 space-y-1; }
+  .ProseMirror ol { list-style-type: decimal; @apply pl-6 mb-4 space-y-1; }
+  .ProseMirror ul li, .ProseMirror ol li { @apply pl-1; }
   .ProseMirror strong { @apply font-bold; }
   .ProseMirror em { @apply italic; }
   .ProseMirror u { @apply underline; }
