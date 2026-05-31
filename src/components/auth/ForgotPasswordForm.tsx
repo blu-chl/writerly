@@ -11,7 +11,7 @@ export default function ForgotPasswordForm() {
 
   const handleSubmit = async (e: React.FormEvent) => {
     e.preventDefault(); setLoading(true); setError("");
-    const { error: err } = await createClient().auth.resetPasswordForEmail(email, { redirectTo: `${window.location.origin}/writerly/#/reset-password` });
+    const { error: err } = await createClient().auth.resetPasswordForEmail(email, { redirectTo: `${window.location.origin}/tynt/#/reset-password` });
     if (err) { setError("No se pudo enviar el correo. Intenta de nuevo."); setLoading(false); return; }
     setSent(true); setLoading(false);
   };
