@@ -10,8 +10,10 @@ function Btn({ onClick, active, disabled, title, children }: { onClick: () => vo
       disabled={disabled}
       onMouseDown={(e) => {
         e.preventDefault(); // Evita que el editor pierda el foco
-        onClick();
+        e.stopPropagation();
+        onClick();          // Solo se llama una vez desde aquí
       }}
+      onClick={(e) => e.preventDefault()} // Bloquea el click para que no duplique
       className={cn("p-1.5 rounded-md transition-colors text-ink-600 hover:bg-ink-100", active && "bg-indigo-100 text-indigo-700", disabled && "opacity-30 cursor-not-allowed")}
     >
       {children}
