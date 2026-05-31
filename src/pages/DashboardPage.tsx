@@ -30,7 +30,7 @@ function Dashboard() {
         <div className="max-w-6xl mx-auto px-6 py-4 flex items-center justify-between">
           <div className="flex items-center gap-2">
             <BookOpen className="w-6 h-6 text-indigo-600" strokeWidth={1.5} />
-            <span className="text-lg font-bold text-ink-900 font-serif">Writerly</span>
+            <span className="text-lg font-bold text-ink-900 font-serif">Tynt</span>
           </div>
           <div className="flex items-center gap-4">
             {userName && <span className="text-sm text-ink-500">Hola, {userName}</span>}

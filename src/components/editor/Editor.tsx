@@ -18,7 +18,14 @@ export default function Editor({ chapterId, initialContent }: { chapterId: strin
 
   const editor = useEditor({
     extensions: [
-      StarterKit.configure({ heading: { levels: [1, 2, 3] }, bulletList: { keepMarks: true }, orderedList: { keepMarks: true } }),
+      StarterKit.configure({
+      heading: { levels: [1, 2, 3] },
+      bulletList: { keepMarks: true, keepAttributes: false },
+      orderedList: { keepMarks: true, keepAttributes: false },
+      blockquote: {},
+      horizontalRule: {},
+      listItem: {},
+    }),
       UnderlineExt, Highlight,
       TextAlign.configure({ types: ["heading", "paragraph", "blockquote"] }),
       Placeholder.configure({ placeholder: "Comienza a escribir tu historia aquí..." }),
